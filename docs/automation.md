@@ -11,9 +11,11 @@ Run the swing stock system as a low-frequency pilot without interfering with the
 This repo should run much less often than the TQQQ repo:
 
 - Weekly scan: Friday 21:30 UTC, after regular US market close.
-- Month-end comparison: 21:30 UTC on days 28-31.
+- Month-end comparison: 21:30 UTC on the final calendar day of the month.
 
 This keeps Yahoo Finance requests low. The active TQQQ bot remains the priority because it manages a real open trade.
+
+Implementation detail: the Cloudflare cron wakes on days 28-31, but the Worker dispatches GitHub Actions only when the scheduled date is the actual last day of the month.
 
 ## GitHub Action
 
