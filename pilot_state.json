@@ -1,8 +1,20 @@
 {
+  "data_errors": [],
   "initial_equity": 1.0,
-  "last_run_at": null,
-  "last_signal_date": null,
+  "last_run_at": "2026-05-04T15:56:54.963616+00:00",
+  "last_signal_date": "2026-05-04",
+  "latest_swing_cagr": 0.0,
+  "latest_swing_maxdd": 0.0,
+  "latest_swing_return": 0.0,
+  "latest_swing_value": 1.0,
+  "latest_tqqq_reference_return": 0.0,
+  "latest_tqqq_reference_value": 1.0,
+  "market_filter_on": true,
   "pilot_start": "2026-05-04",
   "swing_strategy": "weekly_top_2_momentum_rotation",
+  "top_rotation_candidates": [
+    "INTC",
+    "MRVL"
+  ],
   "tqqq_reference": "TQQQ buy/hold reference from pilot start; live TQQQ bot remains source of truth"
 }
