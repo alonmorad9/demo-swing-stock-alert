@@ -58,21 +58,23 @@ The better active approach is:
 From the current TQQQ repo state/strategy as of 2026-05-05:
 
 - Ticker: `TQQQ`
-- Avg cost: `$61.54`
-- Shares: `40.4647`
-- Entry date: `2026-04-29`
-- Highest high since entry: about `$66.61`
+- Current mode: manual safety mode after a user-recorded manual sell
+- Position open: false
+- Shares: `0.0`
+- Tracked cash: about `$2,726.11`
+- Manual exit price: `$67.37`
+- Manual exit date: `2026-05-05`
+- Manual below-SMA reset seen: false
 - Active trailing stop: 25% below highest high since entry
 - Profit target: sell all at +20% from average cost
 - Re-buy trigger after profit exit: 7.5% pullback from profit sell price, or 20 trading days if still above SMA200
 - Manual safety sell mode exists: if the user manually sells TQQQ, the TQQQ repo can be marked with `manual_sold` and a manual sell price.
 - In manual safety mode, the bot tracks cash and waits for a manual re-buy trigger: 7.5% pullback from manual exit price, or an SMA reset after price first moves below SMA200 and later crosses back above.
-- Current mode: in position, not waiting for pullback
 
 Recommendation as of 2026-05-05:
 
-- Hold TQQQ under the current strategy.
-- Do not manually take profit around a small gain.
+- Follow the TQQQ repo's manual safety-mode re-buy instructions.
+- Do not treat the swing repo's TQQQ market reference as the real TQQQ result.
 - Let the strategy rules decide.
 
 ## Month-End Comparison Rule
