@@ -65,6 +65,8 @@ From the current TQQQ repo state/strategy as of 2026-05-05:
 - Active trailing stop: 25% below highest high since entry
 - Profit target: sell all at +20% from average cost
 - Re-buy trigger after profit exit: 7.5% pullback from profit sell price, or 20 trading days if still above SMA200
+- Manual safety sell mode exists: if the user manually sells TQQQ, the TQQQ repo can be marked with `manual_sold` and a manual sell price.
+- In manual safety mode, the bot tracks cash and waits for a manual re-buy trigger: 7.5% pullback from manual exit price, or an SMA reset after price first moves below SMA200 and later crosses back above.
 - Current mode: in position, not waiting for pullback
 
 Recommendation as of 2026-05-05:
@@ -80,6 +82,7 @@ The swing repo's automated TQQQ line is only a simple market reference from the 
 For the real winner calculation, inspect the `tqqq-alert` repo directly:
 
 - `position_state.json`
+- `manual_exit_mode`, `manual_exit_price`, `manual_exit_date`, and `cash` if a manual sell happened
 - recent GitHub Actions runs
 - any Telegram trade instructions
 - current strategy code/commits

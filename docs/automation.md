@@ -78,6 +78,7 @@ At month end, ask Codex to inspect:
 - `reports/*.md`
 - `pilot_state.json`
 - the real `tqqq-alert` repo's `position_state.json`
+- the real `tqqq-alert` repo's manual safety fields if used: `manual_exit_mode`, `manual_exit_price`, `manual_exit_date`, `cash`
 
 Assumption for the pilot:
 

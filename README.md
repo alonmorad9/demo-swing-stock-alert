@@ -94,6 +94,7 @@ The intended setup mirrors the TQQQ repo's safer pattern:
 - This repo runs weekly plus month-end only.
 - The workflow commits `pilot_state.json` and report files so swing demo data is preserved.
 - Month-end comparison must inspect the real TQQQ repo directly, because this repo only records a TQQQ market reference.
+- If TQQQ manual safety sell mode is used, month-end comparison must account for the TQQQ repo's tracked cash/manual exit fields.
 
 ## Important Caveats
 
