@@ -2,6 +2,8 @@
 
 Last updated: 2026-05-04
 
+Status note, 2026-05-15: this file is historical context copied into the swing demo repo. The live TQQQ strategy and real TQQQ/XLK state are maintained in the `tqqq-alert` repo. For month-end, use `tqqq-alert/position_state.json` and `tqqq-alert/docs/monthly-context.md` as the source of truth.
+
 ## Purpose
 
 This file is a compact context handoff for a new research chat. The goal is to continue strategy research without rereading the whole prior conversation.
@@ -277,4 +279,3 @@ Do not change the live TQQQ bot right now.
 The current TQQQ strategy is simple, tested, and operational. It should run for a month before further changes.
 
 The best next research path is a separate "Nasdaq Momentum Rotation" study, not another tweak to the TQQQ bot.
-

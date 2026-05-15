@@ -2,7 +2,7 @@
 
 Second trading system research repo.
 
-This repo is intentionally separate from the existing TQQQ alert bot. The TQQQ strategy remains the primary live system for the current open TQQQ trade. This repo tracks the second system: a stock swing strategy that scans liquid growth stocks, ranks the strongest names, and gives clear buy/sell rules.
+This repo is intentionally separate from the existing TQQQ alert bot. The TQQQ strategy remains the primary real system, and the TQQQ repo is the source of truth for current real TQQQ/XLK state. This repo tracks the second system: a paper/demo stock swing strategy that scans liquid growth stocks, ranks the strongest names, and gives clear buy/sell rules.
 
 ## Recommended Strategy
 
@@ -37,7 +37,7 @@ Main test window: 2018-01-01 through 2026-05-04.
 
 Conclusion:
 
-- Keep managing the current open TQQQ trade under the TQQQ bot rules.
+- Keep managing the real TQQQ/XLK path only from the TQQQ bot repo.
 - The TQQQ strategy changed after initial swing research; the TQQQ repo is the source of truth for the real strategy.
 - Run this swing system as a second, separate pilot.
 - Do not replace the TQQQ strategy yet.
@@ -74,15 +74,15 @@ Generated outputs:
 - `research/out/weekly_rotation_equity_curve.csv`
 - `research/out/pullback_profit_taker_current_signals.csv`
 
-## Current Open TQQQ Context
+## Current TQQQ Context
 
 The existing TQQQ bot strategy is documented in [docs/tqqq-strategy-context.md](docs/tqqq-strategy-context.md).
 
-Current recommendation from the research conversation:
+Current alignment:
 
-- Keep the open TQQQ trade.
-- Do not manually take profit early.
-- Sell only according to the TQQQ strategy: SMA200 break, trailing stop hit, or configured profit target.
+- The live TQQQ repo is the source of truth for real TQQQ and XLK waiting-asset state.
+- This swing repo's TQQQ line is only a market reference.
+- Month-end comparison must not treat the swing paper positions as real holdings.
 
 ## Automation
 

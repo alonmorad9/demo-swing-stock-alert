@@ -1,6 +1,6 @@
 # System Handoff
 
-Last updated: 2026-05-04
+Last updated: 2026-05-15
 
 ## Purpose
 
@@ -9,8 +9,8 @@ This repo is the second trading system. It should stay separate from the existin
 Primary system:
 
 - Existing repo: `tqqq-alert`
-- Strategy: TQQQ long-only swing profit/re-entry system
-- Status: live/open trade
+- Strategy: high-risk/high-reward TQQQ swing system with XLK waiting-asset tracking
+- Status: real system; currently no open TQQQ, tracked XLK waiting-asset exposure
 
 Second system:
 
@@ -23,7 +23,7 @@ Second system:
 
 Do now:
 
-- Continue managing the current TQQQ position under the existing TQQQ rules.
+- Continue managing the real TQQQ/XLK path only from the `tqqq-alert` repo.
 - Use this repo to run weekly swing scans.
 - Treat swing alerts as pilot signals until enough live/paper evidence accumulates.
 
@@ -53,25 +53,28 @@ The better active approach is:
 - Hold while strength continues.
 - Sell when strength breaks.
 
-## Current TQQQ Trade Context
+## Current TQQQ Context
 
-From the current TQQQ repo state/strategy as of 2026-05-05:
+From the current TQQQ repo state/strategy as of 2026-05-15:
 
 - Ticker: `TQQQ`
-- Current mode: manual safety mode after a user-recorded manual sell
+- Current mode: manual safety mode after a user-recorded manual sell, with tracked XLK waiting-asset exposure
 - Position open: false
 - Shares: `0.0`
-- Tracked cash: about `$2,726.11`
+- Tracked cash: about `$26.13`
+- Waiting asset: `XLK`, `15.1158` shares, average cost `$178.62`
 - Manual exit price: `$67.37`
 - Manual exit date: `2026-05-05`
 - Manual below-SMA reset seen: false
-- Active trailing stop: 25% below highest high since entry
+- Current selected TQQQ trailing stop: 14% true ratchet
 - Profit target: sell all at +20% from average cost
-- Re-buy trigger after profit exit: 7.5% pullback from profit sell price, or 20 trading days if still above SMA200
+- Parabolic auto-exit: sell profitable TQQQ if 5-day return is at least 25%
+- Re-entry guard: TQQQ RSI14 must be at or below 65
 - Manual safety sell mode exists: if the user manually sells TQQQ, the TQQQ repo can be marked with `manual_sold` and a manual sell price.
-- In manual safety mode, the bot tracks cash and waits for a manual re-buy trigger: 7.5% pullback from manual exit price, or an SMA reset after price first moves below SMA200 and later crosses back above.
+- In manual safety mode, the bot waits for a manual re-buy trigger: 7.5% pullback from manual exit price, SMA200 reset, or 20-trading-day timeout while above SMA200, plus RSI14 <= 65.
+- XLK is the waiting asset while out of TQQQ. The TQQQ repo tracks real XLK shares if they are manually recorded.
 
-Recommendation as of 2026-05-05:
+Recommendation as of 2026-05-15:
 
 - Follow the TQQQ repo's manual safety-mode re-buy instructions.
 - Do not treat the swing repo's TQQQ market reference as the real TQQQ result.
@@ -84,7 +87,7 @@ The swing repo's automated TQQQ line is only a simple market reference from the 
 For the real winner calculation, inspect the `tqqq-alert` repo directly:
 
 - `position_state.json`
-- `manual_exit_mode`, `manual_exit_price`, `manual_exit_date`, and `cash` if a manual sell happened
+- `manual_exit_mode`, `manual_exit_price`, `manual_exit_date`, `cash`, and XLK parking fields if a manual sell/waiting-asset buy happened
 - recent GitHub Actions runs
 - any Telegram trade instructions
 - current strategy code/commits
