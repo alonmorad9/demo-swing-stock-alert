@@ -69,9 +69,9 @@ From the current TQQQ repo state/strategy as of 2026-05-21:
 - Current selected TQQQ trailing stop: 25% true ratchet
 - Profit target: sell all at +20% from average cost
 - Parabolic auto-exit: sell profitable TQQQ if 5-day return is at least 25% or 10-day return is at least 30%
-- Re-entry guard: TQQQ RSI14 must be at or below 60
+- Re-entry guard: TQQQ RSI14 must be at or below 70
 - Manual safety sell mode exists: if the user manually sells TQQQ, the TQQQ repo can be marked with `manual_sold` and a manual sell price.
-- In manual safety mode, the bot waits for a manual re-buy trigger: 7.5% pullback from manual exit price, SMA200 reset, or 3-trading-day timeout while above SMA200, plus RSI14 <= 60.
+- In manual safety mode, the bot waits for a manual re-buy trigger: 7.5% pullback from manual exit price, SMA200 reset, or 3-trading-day timeout while above SMA200, plus RSI14 <= 70.
 - The TQQQ repo no longer tracks XLK as the selected waiting asset.
 
 Recommendation as of 2026-05-21:
