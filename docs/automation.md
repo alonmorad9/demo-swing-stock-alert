@@ -1,21 +1,20 @@
 # Automation
 
-Last updated: 2026-05-04
+Last updated: 2026-05-23
 
 ## Goal
 
-Run the swing stock system as a low-frequency pilot without interfering with the active TQQQ bot.
+This repo is now paused and kept as a research archive. It should not send automatic Telegram messages or compete with the active real systems.
 
 ## Frequency
 
-This repo should run much less often than the TQQQ repo:
+Automatic runs are disabled:
 
-- Weekly scan: Friday 21:30 UTC, after regular US market close.
-- Month-end comparison: 21:30 UTC on the final calendar day of the month.
+- Weekly scan: paused.
+- Month-end comparison: paused.
+- Manual research reruns: still allowed through GitHub Actions.
 
-This keeps Yahoo Finance requests low. The active TQQQ bot remains the priority because it manages a real open trade.
-
-Implementation detail: the Cloudflare cron wakes on days 28-31, but the Worker dispatches GitHub Actions only when the scheduled date is the actual last day of the month.
+Reason: the real stock behavior and bot-only benchmark now live in `real-stock-alert`, while `tqqq-alert` remains the real master system.
 
 ## GitHub Action
 
@@ -29,7 +28,7 @@ Manual run:
 gh workflow run main.yml -f mode=weekly
 ```
 
-The workflow:
+The workflow can still be run manually. It:
 
 - installs dependencies,
 - runs `script.py`,
@@ -45,17 +44,17 @@ Required repository secrets:
 
 ## External Scheduler
 
-The preferred scheduler is the same pattern as the TQQQ repo:
+The external scheduler is paused:
 
-- Cloudflare Worker triggers GitHub Actions through `workflow_dispatch`.
-- GitHub Actions is not relied on as the only scheduler.
+- `scheduler/cloudflare/wrangler.toml` has no cron triggers.
+- `scheduler/cloudflare/worker.js` has a `PAUSED` guard and does not dispatch the workflow.
 
 Worker files:
 
 - `scheduler/cloudflare/worker.js`
 - `scheduler/cloudflare/wrangler.toml`
 
-Required Cloudflare secret:
+Old required Cloudflare secret, only needed if this archive is reactivated later:
 
 - `GITHUB_TOKEN`
 
@@ -74,13 +73,16 @@ Every run updates `pilot_state.json` with:
 - latest TQQQ market reference return,
 - current leader.
 
-At month end, ask Codex to inspect:
+At month end, this repo is optional historical context only. The main comparison should inspect:
+
+- the real `tqqq-alert` repo's `position_state.json`
+- the real `real-stock-alert` repo's `position_state.json`
+
+If we want to include the old demo paper pilot, inspect:
 
 - `reports/latest_report.md`
 - `reports/*.md`
 - `pilot_state.json`
-- the real `tqqq-alert` repo's `position_state.json`
-- the real `tqqq-alert` repo's manual safety fields if used: `manual_exit_mode`, `manual_exit_price`, `manual_exit_date`, `cash`
 
 Assumption for the pilot:
 

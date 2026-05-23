@@ -1,10 +1,10 @@
 # System Handoff
 
-Last updated: 2026-05-21
+Last updated: 2026-05-23
 
 ## Purpose
 
-This repo is the second trading system. It should stay separate from the existing TQQQ alert bot.
+This repo is now a paused research archive for the old demo stock swing system. It should stay separate from the active TQQQ and real-stock repos.
 
 Primary system:
 
@@ -16,7 +16,7 @@ Second system:
 
 - New repo: `swing-stock-alert`
 - Strategy: weekly top-2 swing momentum rotation
-- Status: research/pilot candidate
+- Status: paused / research archive
 - Paper tracking: seeded from the first official report on 2026-05-04, assuming 50% `INTC` and 50% `MRVL`.
 
 ## Recommended Operating Plan
@@ -24,12 +24,13 @@ Second system:
 Do now:
 
 - Continue managing the real TQQQ path only from the `tqqq-alert` repo.
-- Use this repo to run weekly swing scans.
-- Treat swing alerts as pilot signals until enough live/paper evidence accumulates.
+- Use `real-stock-alert` for any real stock swing behavior and bot-only stock comparison.
+- Keep this repo only as historical May paper-pilot context.
 
 Do not do yet:
 
 - Do not replace TQQQ with the swing strategy.
+- Do not use this repo as an active alert source.
 - Do not force frequent short profit-taking. The backtest rejected that idea.
 
 ## Strategy Decision
@@ -77,15 +78,16 @@ From the current TQQQ repo state/strategy as of 2026-05-21:
 - If TQQQ exits later into manual safety mode, the bot waits for a manual re-buy trigger: 5% pullback from manual exit price, SMA200 reset, or 3-trading-day timeout while above SMA200, plus RSI14 <= 70.
 - The TQQQ repo no longer tracks XLK as the selected waiting asset.
 
-Recommendation as of 2026-05-21:
+Recommendation as of 2026-05-23:
 
 - Follow the TQQQ repo's active-position sell/risk instructions.
+- Use `real-stock-alert` for real stock candidates and bot-only stock comparison.
 - Do not treat the swing repo's TQQQ market reference as the real TQQQ result.
-- Keep the swing strategy as paper/demo evidence for the end-of-month comparison.
+- Keep this repo paused unless we intentionally run a manual historical report.
 
 ## Month-End Comparison Rule
 
-The swing repo's automated TQQQ line is only a simple market reference from the pilot start date.
+The swing repo's automated TQQQ line is only a simple market reference from the pilot start date. The repo is now paused and should be optional historical context only.
 
 For the real winner calculation, inspect the `tqqq-alert` repo directly:
 

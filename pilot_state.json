@@ -1,4 +1,6 @@
 {
+  "active_decision_source": false,
+  "archive_note": "Real stock behavior and bot-only comparison moved to real-stock-alert; keep this repo only for historical May paper-pilot context.",
   "comparison_note": "Month-end real TQQQ result must be read from the tqqq-alert repo position_state.json; this repo only tracks a TQQQ market reference.",
   "data_errors": [],
   "initial_equity": 1.0,
@@ -29,7 +31,9 @@
     }
   ],
   "paper_tracking_note": "Seeded from the first official swing report on 2026-05-04; assumes the demo bought the top two candidates.",
+  "paused_on": "2026-05-23",
   "pilot_start": "2026-05-04",
+  "repo_status": "paused_research_archive",
   "swing_strategy": "weekly_top_2_momentum_rotation",
   "top_rotation_candidates": [
     "INTC",

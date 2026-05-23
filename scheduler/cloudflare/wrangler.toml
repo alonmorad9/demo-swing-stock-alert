@@ -3,10 +3,6 @@ main = "worker.js"
 compatibility_date = "2026-05-04"
 
 [triggers]
-crons = [
-  # Weekly pilot scan: Friday 21:30 UTC, after regular US market close.
-  "30 21 * * 5",
-
-  # Month-end comparison: runs near month end. The script labels this as monthly.
-  "30 21 28-31 * *",
-]
+# Paused on 2026-05-23: this repo is now a research archive.
+# Keep manual GitHub workflow runs available, but do not schedule automatic reports.
+crons = []

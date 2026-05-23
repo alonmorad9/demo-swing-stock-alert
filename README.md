@@ -1,8 +1,10 @@
 # Swing Stock Alert
 
-Second trading system research repo.
+Research archive for the old demo stock swing system.
 
-This repo is intentionally separate from the existing TQQQ alert bot. The TQQQ strategy remains the primary real system, and the TQQQ repo is the source of truth for current real TQQQ position/cash state. This repo tracks the second system: a paper/demo stock swing strategy that scans liquid growth stocks, ranks the strongest names, and gives clear buy/sell rules.
+This repo is intentionally separate from the existing TQQQ alert bot. The TQQQ strategy remains the primary real system, and the TQQQ repo is the source of truth for current real TQQQ position/cash state.
+
+Status as of 2026-05-23: **paused / research archive**. The real stock behavior moved to `real-stock-alert`, which now handles the real stock bucket and bot-only comparison. This repo is kept only for historical May paper-pilot records and manual research reruns.
 
 ## Recommended Strategy
 
@@ -39,8 +41,8 @@ Conclusion:
 
 - Keep managing the real TQQQ path only from the TQQQ bot repo.
 - The TQQQ strategy changed after initial swing research; the TQQQ repo is the source of truth for the real strategy.
-- Run this swing system as a second, separate pilot.
-- Do not replace the TQQQ strategy yet.
+- Do not run this swing system as an active alert source.
+- Use `real-stock-alert` for any real stock swing behavior.
 
 Pilot tracking note:
 
@@ -89,13 +91,12 @@ Current alignment:
 
 Automation is documented in [docs/automation.md](docs/automation.md).
 
-The intended setup mirrors the TQQQ repo's safer pattern:
+This automation is now paused:
 
-- Cloudflare Worker triggers GitHub Actions through `workflow_dispatch`.
-- This repo runs weekly plus month-end only.
-- The workflow commits `pilot_state.json` and report files so swing demo data is preserved.
-- Month-end comparison must inspect the real TQQQ repo directly, because this repo only records a TQQQ market reference.
-- If TQQQ manual safety sell mode is used, month-end comparison must account for the TQQQ repo's tracked cash/manual exit fields.
+- Cloudflare cron triggers are disabled in `scheduler/cloudflare/wrangler.toml`.
+- The Worker returns without dispatching while paused.
+- The GitHub workflow remains available for manual historical/research reruns.
+- Month-end comparison should primarily inspect `tqqq-alert` and `real-stock-alert`.
 
 ## Important Caveats
 

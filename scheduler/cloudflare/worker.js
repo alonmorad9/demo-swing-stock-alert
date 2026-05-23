@@ -1,6 +1,7 @@
 const OWNER = "alonmorad9";
 const REPO = "swing-stock-alert";
 const WORKFLOW_FILE = "main.yml";
+const PAUSED = true;
 
 function modeForSchedule(schedule) {
   // Monthly review cron should pass mode=monthly. Everything else is a weekly pilot scan.
@@ -72,6 +73,11 @@ export default {
       scheduledTime: event.scheduledTime,
     });
 
+    if (PAUSED) {
+      console.log("Swing stock pilot scheduler is paused; no workflow dispatched.");
+      return;
+    }
+
     if (event.cron.startsWith("30 21 28-31") && !isMonthEnd(event.scheduledTime)) {
       console.log("Skipping monthly comparison because this is not the final calendar day.");
       return;
@@ -88,6 +94,10 @@ export default {
 
     if (request.method !== "POST") {
       return new Response("Use POST to trigger the swing stock workflow.\n", { status: 405 });
+    }
+
+    if (PAUSED) {
+      return new Response("Swing stock pilot scheduler is paused. Run the GitHub workflow manually if needed.\n");
     }
 
     await triggerWorkflow(env);
