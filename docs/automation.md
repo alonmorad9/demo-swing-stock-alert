@@ -67,6 +67,8 @@ Every run updates `pilot_state.json` with:
 
 - latest swing pilot value,
 - latest swing return,
+- latest bot-only benchmark value,
+- latest difference versus the bot-only benchmark,
 - current paper positions,
 - latest TQQQ market reference value,
 - latest TQQQ market reference return,

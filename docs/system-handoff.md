@@ -41,6 +41,8 @@ For this month's demo, the repo tracks a simple paper portfolio because the pilo
 - `INTC`, 50% allocation, seeded from the 2026-05-04 report at `$97.99`
 - `MRVL`, 50% allocation, seeded from the 2026-05-04 report at `$164.41`
 
+Telegram reports also show a bot-only benchmark. That benchmark is the pure weekly top-2 rotation model from the pilot start date, so the report can show whether the current seeded paper state is ahead of or behind the bot-only path.
+
 The pullback profit-taking system was tested because it matched the user's instinct to take short profits and recycle capital. It underperformed:
 
 - Too many trades.

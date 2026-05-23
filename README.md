@@ -46,6 +46,7 @@ Pilot tracking note:
 
 - The demo paper portfolio is seeded from the first official report on 2026-05-04.
 - It assumes 50% `INTC` at `$97.99` and 50% `MRVL` at `$164.41`.
+- Telegram reports also show a bot-only benchmark. That benchmark is the pure weekly-rotation model, so it lets us compare the seeded paper state against what the bot would have done by itself.
 
 ## Run Locally
 

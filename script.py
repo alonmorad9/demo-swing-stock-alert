@@ -138,12 +138,20 @@ def build_report(mode):
     market_on = qqq_row["Close"] > qqq_row["SMA200"]
     swing_value = paper["value"] if paper else rotation["final"]
     swing_return = swing_value - 1
+    bot_only_value = float(rotation["final"])
+    bot_only_return = bot_only_value - 1
+    bot_gap = swing_value - bot_only_value
+    bot_gap_pct = bot_gap / bot_only_value if bot_only_value else 0.0
 
     state.update(
         {
             "last_signal_date": asof.isoformat(),
             "latest_swing_value": round(swing_value, 6),
             "latest_swing_return": round(swing_return, 6),
+            "latest_bot_only_value": round(bot_only_value, 6),
+            "latest_bot_only_return": round(bot_only_return, 6),
+            "latest_vs_bot_only": round(bot_gap, 6),
+            "latest_vs_bot_only_pct": round(bot_gap_pct, 6),
             "latest_swing_cagr": round(rotation["cagr"], 6),
             "latest_swing_maxdd": round(rotation["maxdd"], 6),
             "latest_tqqq_market_reference_value": round(tqqq["value"], 6) if tqqq and not tqqq.get("error") else None,
@@ -182,6 +190,21 @@ def build_report(mode):
         lines.append(
             f"| TQQQ market reference | {multiple(tqqq['value'])} | {pct(tqqq['return'])} | n/a | not the real TQQQ bot |"
         )
+
+    lines.extend(
+        [
+            "",
+            "## Bot-Only Benchmark",
+            "",
+            "This shows what the swing bot model says would have happened if the demo followed only the weekly rotation rules.",
+            "",
+            f"- Bot-only value: {multiple(bot_only_value)} ({pct(bot_only_return)})",
+            f"- Current paper value: {multiple(swing_value)} ({pct(swing_return)})",
+            f"- Vs bot-only path: {multiple(swing_value / bot_only_value) if bot_only_value else 'n/a'} "
+            f"({pct(bot_gap_pct)})",
+            f"- Bot-only max drawdown: {pct(rotation['maxdd'])}",
+        ]
+    )
 
     leader = "n/a"
     if tqqq and not tqqq.get("error"):
@@ -252,6 +275,7 @@ def build_report(mode):
             "",
             "- This swing repo is a demo/pilot for the month.",
             "- Swing paper performance assumes the first reported candidates were bought for the demo.",
+            "- Bot-only benchmark shows the pure weekly-rotation model, separate from the seeded paper positions.",
             "- The active TQQQ repo remains the source of truth for the open TQQQ trade.",
             "- The TQQQ value in this report is only a market reference from the pilot start date.",
             "- For month-end winner calculation, inspect the real `tqqq-alert` repo state and strategy history.",
@@ -275,18 +299,19 @@ def build_report(mode):
 
 def telegram_summary(report, rotation_signals, tqqq, rotation):
     top = ", ".join(s["ticker"] for s in rotation_signals[:MAX_POSITIONS]) or "none"
-    tqqq_line = "TQQQ market reference unavailable"
-    if tqqq and not tqqq.get("error"):
-        tqqq_line = f"TQQQ market ref: {multiple(tqqq['value'])} ({pct(tqqq['return'])})"
 
     state = load_state()
     paper_value = state.get("latest_swing_value", rotation["final"])
     paper_return = state.get("latest_swing_return", rotation["final"] - 1)
+    bot_value = state.get("latest_bot_only_value", rotation["final"])
+    bot_return = state.get("latest_bot_only_return", rotation["final"] - 1)
+    vs_bot = state.get("latest_vs_bot_only_pct", 0.0)
     return (
         "📊 Swing stock pilot report\n"
         f"Top weekly candidates: {top}\n"
-        f"Swing pilot: {multiple(paper_value)} ({pct(paper_return)})\n"
-        f"{tqqq_line}\n"
+        f"Current paper: {multiple(paper_value)} ({pct(paper_return)})\n"
+        f"Bot-only benchmark: {multiple(bot_value)} ({pct(bot_return)})\n"
+        f"Vs bot-only: {pct(vs_bot)}\n"
         "Full report committed to reports/latest_report.md"
     )
 
