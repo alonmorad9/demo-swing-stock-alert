@@ -1,6 +1,6 @@
 # System Handoff
 
-Last updated: 2026-05-29
+Last updated: 2026-06-05
 
 ## Purpose
 
@@ -10,7 +10,7 @@ Primary system:
 
 - Existing repo: `tqqq-alert`
 - Strategy: high-risk/high-reward TQQQ-only system, cash while out
-- Status: real system; currently out of TQQQ in manual safety cash mode
+- Status: real system; currently an open TQQQ position
 
 Second system:
 
@@ -58,19 +58,19 @@ The better active approach is:
 
 ## Current TQQQ Context
 
-From the current TQQQ repo state/strategy as of 2026-05-29:
+From the current TQQQ repo state/strategy as of 2026-06-05:
 
 - Ticker: `TQQQ`
-- Current mode: manual safety cash after manual broker sell sync
-- Position open: false
-- Shares: `0.0`
-- Average cost: `null`
-- Entry date: `null`
-- Tracked cash: `$3,028.38`
-- Waiting asset: cash
-- Manual exit mode: true
-- Manual exit price: `$84.91`
-- Manual exit date: `2026-05-29`
+- Current mode: active TQQQ position after manual broker buy sync
+- Position open: true
+- Shares: `35.3032`
+- Average cost: `$83.84`
+- Entry date: `2026-06-04`
+- Tracked cash: `$4.80`
+- Waiting asset: none while TQQQ is open
+- Manual exit mode: false
+- Manual exit price: `null`
+- Manual exit date: `null`
 - Current selected TQQQ trailing stop: 25% true ratchet
 - Profit target: sell all at +20% from average cost
 - Parabolic auto-exit: sell profitable TQQQ if 5-day return is at least 25%.
@@ -80,10 +80,10 @@ From the current TQQQ repo state/strategy as of 2026-05-29:
 - If TQQQ exits later into manual safety mode, the bot waits for a manual re-buy trigger: 5% pullback from manual exit price, SMA200 reset, or 3-trading-day timeout while above SMA200, plus RSI14 <= 70.
 - The TQQQ repo no longer tracks XLK as the selected waiting asset.
 
-Recommendation as of 2026-05-29:
+Recommendation as of 2026-06-05:
 
-- Follow the TQQQ repo's manual safety re-entry instructions.
-- Use `real-stock-alert` for optional real stock candidates and bot-only stock comparison while TQQQ is out/waiting.
+- Follow the TQQQ repo's active-position sell/risk instructions.
+- Use `real-stock-alert` for bot-only stock comparison now, and for optional real stock candidates only after a future TQQQ exit.
 - Do not treat the swing repo's TQQQ market reference as the real TQQQ result.
 - Keep this repo paused unless we intentionally run a manual historical report.
 
