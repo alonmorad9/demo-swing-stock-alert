@@ -74,6 +74,8 @@ From the current TQQQ repo state/strategy as of 2026-06-06:
 - Manual exit date: `null`
 - Current selected TQQQ trailing stop: 25% true ratchet
 - Fresh-entry guard: during the first 2 trading days after a buy, sell if TQQQ falls 10% below average cost.
+- Fresh-entry guard cooldown: after this guard sells, wait in cash for the rest of that trading day.
+- Intraday entry delay: no bot-generated buys during the first 30 market minutes.
 - Profit target: sell all at +20% from average cost
 - Parabolic auto-exit: sell profitable TQQQ if 5-day return is at least 25%.
 - Early-warning risk: advisory only, no automatic sell. Current warnings are VIX >= 25, VIX 5-day spike >= 25%, QQQ below EMA21, TQQQ below SMA20, and TQQQ RSI falling from 70+.
