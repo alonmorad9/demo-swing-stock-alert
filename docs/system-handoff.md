@@ -1,6 +1,6 @@
 # System Handoff
 
-Last updated: 2026-06-05
+Last updated: 2026-06-06
 
 ## Purpose
 
@@ -58,7 +58,7 @@ The better active approach is:
 
 ## Current TQQQ Context
 
-From the current TQQQ repo state/strategy as of 2026-06-05:
+From the current TQQQ repo state/strategy as of 2026-06-06:
 
 - Ticker: `TQQQ`
 - Current mode: active TQQQ position after manual broker buy sync
@@ -66,12 +66,14 @@ From the current TQQQ repo state/strategy as of 2026-06-05:
 - Shares: `35.3032`
 - Average cost: `$83.84`
 - Entry date: `2026-06-04`
+- High since entry: `$86.25`
 - Tracked cash: `$4.80`
 - Waiting asset: none while TQQQ is open
 - Manual exit mode: false
 - Manual exit price: `null`
 - Manual exit date: `null`
 - Current selected TQQQ trailing stop: 25% true ratchet
+- Fresh-entry guard: during the first 2 trading days after a buy, sell if TQQQ falls 10% below average cost.
 - Profit target: sell all at +20% from average cost
 - Parabolic auto-exit: sell profitable TQQQ if 5-day return is at least 25%.
 - Early-warning risk: advisory only, no automatic sell. Current warnings are VIX >= 25, VIX 5-day spike >= 25%, QQQ below EMA21, TQQQ below SMA20, and TQQQ RSI falling from 70+.
@@ -80,7 +82,7 @@ From the current TQQQ repo state/strategy as of 2026-06-05:
 - If TQQQ exits later into manual safety mode, the bot waits for a manual re-buy trigger: 5% pullback from manual exit price, SMA200 reset, or 3-trading-day timeout while above SMA200, plus RSI14 <= 70.
 - The TQQQ repo no longer tracks XLK as the selected waiting asset.
 
-Recommendation as of 2026-06-05:
+Recommendation as of 2026-06-06:
 
 - Follow the TQQQ repo's active-position sell/risk instructions.
 - Use `real-stock-alert` for bot-only stock comparison now, and for optional real stock candidates only after a future TQQQ exit.
