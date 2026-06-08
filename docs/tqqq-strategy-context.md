@@ -2,7 +2,7 @@
 
 Last updated: 2026-05-04
 
-Status note, 2026-05-15: this file is historical context copied into the swing demo repo. The live TQQQ strategy and real TQQQ/XLK state are maintained in the `tqqq-alert` repo. For month-end, use `tqqq-alert/position_state.json` and `tqqq-alert/docs/monthly-context.md` as the source of truth.
+Status note, 2026-06-08: this file is historical context copied into the paused swing demo repo. The live TQQQ strategy and real TQQQ state are maintained in the `tqqq-alert` repo. For month-end, use `tqqq-alert/position_state.json` and `tqqq-alert/docs/monthly-context.md` as the source of truth.
 
 ## Purpose
 
