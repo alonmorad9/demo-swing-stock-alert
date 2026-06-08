@@ -4,7 +4,7 @@ Research archive for the old demo stock swing system.
 
 This repo is intentionally separate from the existing TQQQ alert bot. The TQQQ strategy remains the primary real system, and the TQQQ repo is the source of truth for current real TQQQ position/cash state.
 
-Status as of 2026-06-06: **paused / research archive**. The real stock behavior moved to `real-stock-alert`, which now handles the real stock bucket and bot-only comparison. This repo is kept only for historical May paper-pilot records and manual research reruns.
+Status as of 2026-06-08: **paused / research archive**. The real stock behavior moved to `real-stock-alert`, which now handles the real stock bucket and bot-only comparison. This repo is kept only for historical May paper-pilot records and manual research reruns.
 
 ## Recommended Strategy
 
@@ -84,8 +84,8 @@ The existing TQQQ bot strategy is documented in [docs/tqqq-strategy-context.md](
 Current alignment:
 
 - The live TQQQ repo is the source of truth for real TQQQ position/cash state.
-- As of the 2026-06-06 inspection, TQQQ is open with `35.3032` shares at `$83.84` average cost, `$86.25` high since entry, and `$4.80` residual cash.
-- The active TQQQ strategy now includes a narrow 10% fresh-entry guard during the first 2 trading days after a buy, a same-day cooldown after fresh-entry guard exits, and no bot-generated buys during the first 30 market minutes.
+- As of the 2026-06-08 inspection, TQQQ is open with `35.3032` shares at `$83.84` average cost, `$86.25` high since entry, and `$4.80` residual cash.
+- The active TQQQ strategy is the Best Calmar high-return profile: 25% ratchet, 10% fresh-entry guard, same-day cooldown after fresh-entry guard exits, no bot-generated buys during the first 30 market minutes, +20% profit target, -7.5% re-buy pullback, 10-trading-day profit timeout, no RSI re-entry gate, and parabolic exit on 5d >= 25% or 10d >= 30%.
 - `real-stock-alert` is inactive for real stock cash while TQQQ is open, but remains the optional TQQQ-out stock swing bucket for future waiting periods.
 - This swing repo's TQQQ line is only a market reference.
 - Month-end comparison must not treat the swing paper positions as real holdings.

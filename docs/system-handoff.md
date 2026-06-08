@@ -1,6 +1,6 @@
 # System Handoff
 
-Last updated: 2026-06-06
+Last updated: 2026-06-08
 
 ## Purpose
 
@@ -58,7 +58,7 @@ The better active approach is:
 
 ## Current TQQQ Context
 
-From the current TQQQ repo state/strategy as of 2026-06-06:
+From the current TQQQ repo state/strategy as of 2026-06-08:
 
 - Ticker: `TQQQ`
 - Current mode: active TQQQ position after manual broker buy sync
@@ -77,11 +77,13 @@ From the current TQQQ repo state/strategy as of 2026-06-06:
 - Fresh-entry guard cooldown: after this guard sells, wait in cash for the rest of that trading day.
 - Intraday entry delay: no bot-generated buys during the first 30 market minutes.
 - Profit target: sell all at +20% from average cost
-- Parabolic auto-exit: sell profitable TQQQ if 5-day return is at least 25%.
+- Re-buy pullback: 7.5% from actual sell price
+- Profit re-buy timeout: 10 trading days
+- Re-entry RSI gate: off
+- Parabolic auto-exit: sell profitable TQQQ if 5-day return is at least 25% or 10-day return is at least 30%.
 - Early-warning risk: advisory only, no automatic sell. Current warnings are VIX >= 25, VIX 5-day spike >= 25%, QQQ below EMA21, TQQQ below SMA20, and TQQQ RSI falling from 70+.
-- Re-entry guard: TQQQ RSI14 must be at or below 70
 - Manual safety sell mode exists: if the user manually sells TQQQ, the TQQQ repo can be marked with `manual_sold` and a manual sell price.
-- If TQQQ exits later into manual safety mode, the bot waits for a manual re-buy trigger: 5% pullback from manual exit price, SMA200 reset, or 3-trading-day timeout while above SMA200, plus RSI14 <= 70.
+- If TQQQ exits later into manual safety mode, the bot waits for a manual re-buy trigger: 7.5% pullback from manual exit price, SMA200 reset, or 3-trading-day timeout while above SMA200.
 - The TQQQ repo no longer tracks XLK as the selected waiting asset.
 
 Recommendation as of 2026-06-06:
