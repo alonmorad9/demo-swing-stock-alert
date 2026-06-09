@@ -91,6 +91,7 @@ Recommendation as of 2026-06-06:
 - Follow the TQQQ repo's active-position sell/risk instructions.
 - Use `real-stock-alert` for bot-only stock comparison now, and for optional real stock candidates only after a future TQQQ exit.
 - Treat the selected real-stock setup as RS63-heavy scoring, 8% ATR fresh-buy cap, two-week rank confirmation, and no fixed timeout.
+- For month-end comparison, note that the real-stock bot-only benchmark was reset on 2026-06-09 to `$2,697.38` cash.
 - Do not treat the swing repo's TQQQ market reference as the real TQQQ result.
 - Keep this repo paused unless we intentionally run a manual historical report.
 
