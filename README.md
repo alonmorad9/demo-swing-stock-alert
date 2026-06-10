@@ -85,8 +85,8 @@ Current alignment:
 
 - The live TQQQ repo is the source of truth for real TQQQ position/cash state.
 - As of the 2026-06-08 inspection, TQQQ is open with `35.3032` shares at `$83.84` average cost, `$86.25` high since entry, and `$4.80` residual cash.
-- The active TQQQ strategy is the Best Calmar high-return profile: 25% ratchet, 10% fresh-entry guard, same-day cooldown after fresh-entry guard exits, no bot-generated buys during the first 30 market minutes, +20% profit target, -7.5% re-buy pullback, 10-trading-day profit timeout, no RSI re-entry gate, and parabolic exit on 5d >= 25% or 10d >= 30%.
-- `real-stock-alert` is inactive for real stock cash while TQQQ is open, but remains the optional TQQQ-out stock swing bucket for future waiting periods. Its selected stock setup is RS63-heavy scoring, 8% ATR fresh-buy cap, two-week rank confirmation, and no fixed timeout.
+- The active TQQQ strategy is the New Broad Max / max-revenue profile: 25% ratchet, 10% fresh-entry guard, same-day cooldown after fresh-entry guard exits, no bot-generated buys during the first 30 market minutes, +25% profit target, -7.5% re-buy pullback, 10-trading-day profit timeout, 3-trading-day manual safety timeout, RSI14 <= 70 re-entry cap, 3 confirmed SMA200 checks/days, advisory parabolic stretch, advisory early-warning signals, and cash/no-XLK while waiting.
+- `real-stock-alert` is inactive for real stock cash while TQQQ is open, but remains the optional TQQQ-out stock swing bucket for future waiting periods. Its selected stock setup is RS63-heavy scoring, 8% ATR fresh-buy cap, two-week rank confirmation, no fixed timeout, weekly-only routine Telegram reports, and silent opening/daily checks except real sell alerts.
 - The `real-stock-alert` bot-only benchmark was reset on 2026-06-09 to `$2,697.38` cash for the fresh month-end comparison path.
 - This swing repo's TQQQ line is only a market reference.
 - Month-end comparison must not treat the swing paper positions as real holdings.
